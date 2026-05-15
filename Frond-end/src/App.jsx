@@ -39,7 +39,7 @@ function App() {
       );
 
       const response = await axios.post(
-        "http://localhost:5000/api/resume/analyze",
+        "https://ai-powered-resume-analyzer-jb27.onrender.com",
         formData
       );
 
@@ -58,7 +58,10 @@ function App() {
 
       console.error(error);
 
-      alert("Analysis Failed");
+      alert(
+       error.response?.data?.message ||
+       "Analysis Failed"
+        );
 
     } finally {
 
