@@ -9,7 +9,7 @@ const app = express();
 app.use(
   cors({
     origin:
-      "https://ai-powered-resume-analyzer-black.vercel.app/",
+      "https://ai-powered-resume-analyzer-black.vercel.app",
   })
 );
 
