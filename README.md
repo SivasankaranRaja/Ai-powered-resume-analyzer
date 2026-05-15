@@ -1,65 +1,62 @@
-AI Resume Analyzer
+# AI Resume Analyzer 🚀
 
-An AI-powered Resume Analyzer built using React, Node.js, Express, Tailwind CSS, and Google Gemini AI.
-
-Users can upload resumes in PDF format and receive intelligent AI-based feedback including:
-
-- Resume Score
-- Profile Summary
-- Strengths
-- Weaknesses
-- Missing Skills
-- Suggestions
-- Job Description Matching
-- Matched Skills
+An AI-powered Resume Analyzer that evaluates resumes, matches them with job descriptions, identifies missing skills, and provides intelligent suggestions using Google Gemini AI.
 
 ---
 
-Live Demo
+# 🌐 Live Demo
 
-Frontend:
-https://ai-powered-resume-analyzer-azure-three.vercel.app
+### Frontend
 
-Backend:
-https://ai-powered-resume-analyzer-jb27.onrender.com
+[AI Resume Analyzer Live App](https://ai-powered-resume-analyzer-azure-three.vercel.app)
 
----
+### GitHub Repository
 
- Features
-
-- Modern Glassmorphism UI
-- PDF Resume Upload
-- AI Resume Analysis
-- ATS-style Resume Scoring
-- Job Description Matching
-- Skill Gap Detection
-- Responsive Design
-- Real-time Analysis
+[GitHub Repository](https://github.com/SivasankaranRaja/Ai-powered-resume-analyzer)
 
 ---
 
-Tech Stack
+# ✨ Features
 
- Frontend
-- React.js
-- Tailwind CSS
-- Axios
-- Vite
-
-### Backend
-- Node.js
-- Express.js
-- Multer
-- PDF-Parse
-- Google Gemini AI API
-
-### Deployment
-- Vercel (Frontend)
-- Render (Backend)
+* 📄 Upload Resume PDF
+* 🤖 AI Resume Analysis
+* 📊 Resume Score
+* 🎯 Job Description Matching
+* ✅ Matched Skills Detection
+* ❌ Missing Skills Detection
+* 💪 Strengths & Weaknesses Analysis
+* 💡 AI Suggestions
+* 🎨 Modern Tailwind CSS UI
+* ⚡ Fast Analysis Workflow
+* ☁️ Cloud Deployment
 
 ---
 
-## Folder Structure
+# 🛠️ Tech Stack
+
+## Frontend
+
+* React.js
+* Vite
+* Tailwind CSS
+* Axios
+
+## Backend
+
+* Node.js
+* Express.js
+* Multer
+* PDF-Parse
+* Google Gemini API
+
+## Deployment
+
+* Vercel (Frontend)
+* Render (Backend)
+
+---
+
+# 📂 Project Structure
 
 ```bash
 Ai-powered-resume-analyzer/
@@ -76,13 +73,15 @@ Ai-powered-resume-analyzer/
 │   ├── utils/
 │   ├── uploads/
 │   └── server.js
-````
+│
+└── README.md
+```
 
 ---
 
-## Installation
+# ⚙️ Project Setup
 
-### Clone Repository
+# 1️⃣ Clone Repository
 
 ```bash
 git clone https://github.com/SivasankaranRaja/Ai-powered-resume-analyzer.git
@@ -90,92 +89,243 @@ git clone https://github.com/SivasankaranRaja/Ai-powered-resume-analyzer.git
 
 ---
 
-## Frontend Setup
+# 2️⃣ Frontend Setup
 
 ```bash
 cd Front-end
+
 npm install
+
 npm run dev
+```
+
+Frontend runs on:
+
+```bash
+http://localhost:5173
 ```
 
 ---
 
-## Backend Setup
+# 3️⃣ Backend Setup
 
 ```bash
 cd Back-end
+
 npm install
-npm run dev
+
+npm start
+```
+
+Backend runs on:
+
+```bash
+http://localhost:5000
 ```
 
 ---
 
-## Environment Variables
+# 🔑 Environment Variables
 
-Create a `.env` file inside `Back-end`
+Create a `.env` file inside the `Back-end` folder.
 
 ```env
 GEMINI_API_KEY=your_api_key
-PORT=5000
 ```
 
 ---
 
-## API Endpoint
+# 🧠 Architecture / Flow Explanation
 
-### Analyze Resume
-
-```http
-POST /api/resume/analyze
+```text
+User Uploads Resume PDF
+            ↓
+Frontend (React + Tailwind)
+            ↓
+Axios API Request
+            ↓
+Backend Express Server
+            ↓
+PDF Text Extraction
+            ↓
+Prompt Builder
+            ↓
+Google Gemini AI API
+            ↓
+AI JSON Response
+            ↓
+Frontend Dashboard UI
 ```
 
-Form Data:
+---
 
-* resume (PDF File)
-* jobDescription (Text)
+# 🤖 AI Tools / Models Used
+
+## Google Gemini API
+
+Model Used:
+
+```text
+gemini-2.0-flash
+```
+
+Purpose:
+
+* Resume analysis
+* Skill extraction
+* Resume scoring
+* Job matching
+* Suggestions generation
 
 ---
 
-## Future Improvements
+# 📝 Prompt Used
 
-* Authentication System
-* Resume History
-* Download Report as PDF
-* Section-wise Scoring
-* Resume Keyword Highlighting
-* AI Interview Question Generator
-* MongoDB Integration
-* Cloud Deployment Insights
+```javascript
+You are an expert AI Resume Analyzer.
+
+Analyze the following resume and return ONLY valid JSON.
+
+Return format:
+
+{
+  "score": number,
+  "jobMatchScore": number,
+  "summary": "",
+  "strengths": [],
+  "weaknesses": [],
+  "missingSkills": [],
+  "matchedSkills": [],
+  "suggestions": []
+}
+
+Resume:
+${resumeText}
+
+Job Description:
+${jobDescription}
+```
 
 ---
 
-## Screenshots
+# ✅ What Worked Well
 
-Add your project screenshots here.
-
----
-
-## Author
-
-Sivasankaran R
-
-GitHub:
-[https://github.com/SivasankaranRaja](https://github.com/SivasankaranRaja)
+* PDF text extraction worked accurately.
+* Gemini AI generated structured responses successfully.
+* Tailwind CSS improved UI quality significantly.
+* Job description matching produced meaningful results.
+* Deployment on Vercel and Render worked successfully.
+* Glassmorphism UI design improved user experience.
 
 ---
 
-## License
+# ⚠️ Where AI Output Was Incorrect / Needed Manual Correction
+
+* Sometimes Gemini returned markdown JSON blocks like:
+
+````text
+```json
+{
+}
+````
+
+````
+
+This required manual cleanup using:
+
+```javascript
+.replace(/```json/g, "")
+.replace(/```/g, "")
+````
+
+* Occasionally AI responses missed fields like:
+
+  * `matchedSkills`
+  * `jobMatchScore`
+
+* Some suggestions were too generic and required prompt improvements.
+
+* AI score variations occurred for the same resume because LLM outputs are non-deterministic.
+
+---
+
+# 📌 Assumptions Made
+
+* Users upload only PDF resumes.
+* Resume text is machine-readable.
+* Job descriptions are optional.
+* AI responses always return valid JSON after cleanup.
+* Users have internet access for AI API calls.
+
+---
+
+# ⚠️ Limitations
+
+* No authentication system.
+* No database storage.
+* PDF-only support.
+* AI output may vary slightly.
+* Large resumes may increase response time.
+* No ATS keyword optimization yet.
+* No report export feature currently.
+
+---
+
+# 🚀 Improvements Possible With More Time
+
+* 📥 Download Analysis as PDF
+* 🔐 Authentication System
+* 🧠 ATS Resume Optimization
+* 📊 Section-wise Scoring
+* ☁️ Cloud Storage Integration
+* 📈 Resume Analytics Dashboard
+* 🌍 Multi-language Support
+* 🧪 Better Prompt Engineering
+* 📌 Resume Keyword Highlighting
+* ⚡ AI Response Caching
+* 🧵 Streaming AI Responses
+* 📱 Mobile Optimization
+
+---
+
+# 📸 Screenshots
+
+## Home Page
+
+* Resume Upload
+* Job Description Input
+* Modern Gradient UI
+
+## Analysis Dashboard
+
+* Resume Score
+* Job Match Score
+* Strengths & Weaknesses
+* Missing Skills
+* Suggestions
+
+---
+
+# 👨‍💻 Author
+
+## Sivasankaran R
+
+* Backend Developer
+* AI & Blockchain Enthusiast
+* MERN Stack Developer
+
+---
+
+# ⭐ Support
+
+If you like this project:
+
+* ⭐ Star the repository
+* 🍴 Fork the project
+* 🚀 Contribute improvements
+
+---
+
+# 📜 License
 
 This project is licensed under the MIT License.
-
-```
-
-Then:
-
-1. Open `README.md`
-2. Replace everything
-3. Commit changes
-4. Push to GitHub
-
-Your GitHub project page will look much more professional after this.
-```
