@@ -288,23 +288,6 @@ This required manual cleanup using:
 
 ---
 
-# 📸 Screenshots
-
-## Home Page
-
-* Resume Upload
-* Job Description Input
-* Modern Gradient UI
-
-## Analysis Dashboard
-
-* Resume Score
-* Job Match Score
-* Strengths & Weaknesses
-* Missing Skills
-* Suggestions
-
----
 
 # 👨‍💻 Author
 
