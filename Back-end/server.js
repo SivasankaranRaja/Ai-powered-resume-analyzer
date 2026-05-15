@@ -6,7 +6,13 @@ const resumeRoutes = require("./routes/resumeRoutes");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      "https://ai-powered-resume-analyzer-black.vercel.app/",
+  })
+);
+
 app.use(express.json());
 
 app.use("/api/resume", resumeRoutes);
