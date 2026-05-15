@@ -39,10 +39,9 @@ function App() {
       );
 
       const response = await axios.post(
-        "https://ai-powered-resume-analyzer-jb27.onrender.com",
-        formData
+         "https://ai-powered-resume-analyzer-jb27.onrender.com/api/resume/analyze",
+         formData
       );
-
       const cleanText =
         response.data.analysis
           .replace(/```json/g, "")
